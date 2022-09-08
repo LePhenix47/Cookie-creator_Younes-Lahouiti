@@ -1,0 +1,445 @@
+//SASS variables
+$body-bg-color-primary: #ffefba;
+$body-bg-color-secondary: white;
+$body-bg-color-primary--dark-theme: #001045;
+$body-bg-color-secondary--dark-theme: black;
+
+$text-color: black;
+$delete-button-bg-color: #dc143c;
+$delete-button-bg-color--hover: lighten($delete-button-bg-color, 20%);
+$delete-button-bg-color--active: darken($delete-button-bg-color, 10%);
+
+$delete-button-color: white;
+
+$buttons-bg-color: #006c67;
+$buttons-bg-color--hover: lighten($buttons-bg-color, 10%);
+$buttons-bg-color--active: darken($buttons-bg-color, 10%);
+$buttons-text-color: white;
+$input-bg-color: white;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$shadow-color--focus: rgba(0, 0, 0, 0.6);
+$cards-bg-color: white;
+
+//CSS variables
+:root {
+    --body-bg-color-primary: #{$body-bg-color-primary};
+    --body-bg-color-secondary: #{$body-bg-color-secondary};
+    --body-bg-color-primary--dark-theme: #{$body-bg-color-primary--dark-theme};
+    --body-bg-color-secondary--dark-theme: #{$body-bg-color-secondary--dark-theme};
+
+    --text-color: #{$text-color};
+
+    --delete-button-bg-color: #{$delete-button-bg-color};
+    --delete-button-bg-color--hover: #{$delete-button-bg-color--hover};
+    --delete-button-bg-color--active: #{$delete-button-bg-color--active};
+    --delete-button-color: #{$delete-button-color};
+
+    --buttons-bg-color: #{$buttons-bg-color};
+    --buttons-bg-color--hover: #{$buttons-bg-color--hover};
+    --buttons-bg-color--active: #{$buttons-bg-color--active};
+
+    --input-bg-color: #{$input-bg-color};
+    --shadow-color: #{$shadow-color};
+    --shadow-color--focus: #{$shadow-color--focus};
+    --cards-bg-color: #{$cards-bg-color};
+    --buttons-text-color: #{$buttons-text-color};
+}
+
+
+//Dark theme media query
+@media (prefers-color-scheme: dark) {
+    //SASS variables
+    $text-color: white;
+    $delete-button-bg-color: #dc143c;
+    $buttons-bg-color: #ff9398;
+    $buttons-bg-color--hover: darken($buttons-bg-color, 10%);
+    $buttons-bg-color--active: lighten($buttons-bg-color, 10%);
+    $buttons-text-color: black;
+    $input-bg-color: black;
+    $shadow-color: rgba(255, 255, 255, 0.3);
+    $shadow-color--focus: rgba(255, 255, 255, 0.6);
+    $cards-bg-color: black;
+
+    //CSS variables
+    :root {
+        --text-color: #{$text-color};
+        --delete-button-bg-color: #{$delete-button-bg-color};
+
+        --buttons-bg-color: #{$buttons-bg-color};
+        --buttons-bg-color--hover: #{$buttons-bg-color--hover};
+        --buttons-bg-color--active: #{$buttons-bg-color--active};
+
+        --input-bg-color: #{$input-bg-color};
+        --cards-bg-color: #{$cards-bg-color};
+        --buttons-text-color: #{$buttons-text-color};
+
+        --shadow-color: #{$shadow-color};
+        --shadow-color--focus: #{$shadow-color--focus};
+    }
+
+
+    body {
+        background-position: 100% 0 !important;
+    }
+}
+
+//Maps
+$breakpoints: (
+    mobile: 768px,
+    tablet: 992px,
+    laptop: 993px,
+    desktop: 1150px
+);
+
+
+//Mixins 
+@mixin center-flex-gap($gap: 0px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin center-flex-column-gap ($gap: 0px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
+
+@mixin grid($rows: auto-fill, $columns: auto-fill, $gap: 20px) {
+    display: grid;
+    grid-template-rows: repeat($rows, 1fr);
+    grid-template-columns: repeat($columns, minmax(25%, 1fr));
+    gap: $gap;
+}
+
+@mixin label-styling {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-family: 'Raleway';
+    font-weight: 700;
+    font-size: 14px;
+
+    @include mobile-only {
+        width: 75%;
+    }
+}
+
+@mixin input-styling {
+    @include mobile-only {
+        width: 100%;
+    }
+
+    width: 600px;
+    height: 40px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 5px var(--shadow-color);
+    transition: box-shadow 175ms ease-out,
+    background-color 350ms ease-out,
+    color 350ms ease-out;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+
+    &:focus {
+        box-shadow: 0px 5px 5px var(--shadow-color--focus);
+    }
+
+    &:autofill {
+        border: 2px solid blueviolet;
+    }
+
+    &:-webkit-autofill {
+        border: 2px solid blueviolet;
+    }
+}
+
+@mixin button-styling {
+    background-color: var(--buttons-bg-color);
+    color: var(--buttons-text-color);
+    font-family: 'Raleway';
+    font-size: 18px;
+    padding: 10px 0px;
+    width: 100px;
+
+    @include mobile-only {
+        width: 75%;
+    }
+
+    border-radius: 5px;
+
+    transition: background-color 350ms ease-out,
+    color 350ms ease-out;
+
+    &:hover {
+        background-color: var(--buttons-bg-color--hover);
+    }
+
+    &:active {
+        background-color: var(--buttons-bg-color--active);
+    }
+}
+
+@mixin cookie-card-styling {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    background-color: var(--cards-bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    width: 290px;
+    height: 90px;
+    box-shadow:
+        0px 3px 10px var(--shadow-color);
+}
+
+//Normalization and typography
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(to right, var(--body-bg-color-primary), var(--body-bg-color-secondary), var(--body-bg-color-primary--dark-theme), var(--body-bg-color-secondary--dark-theme));
+    background-size: 300% 100%;
+
+    @include mobile-only {
+        background-size: 400% 100%;
+
+    }
+
+    background-position: 0% 0%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: var(--text-color);
+    transition: background-position 450ms ease-out,
+    color 450ms ease-out;
+}
+
+button {
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+label {
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input {
+    outline: none;
+    border: none;
+    font-family: 'Raleway';
+}
+
+a {
+    color: var(--text-color);
+
+    &:visited {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+}
+
+//SASS Styles
+
+.scroll-to-top {
+    z-index: 1;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    height: 35px;
+    width: 25px;
+    outline: 2px solid var(--text-color);
+    background-color: var(--cards-bg-color);
+    color: var(--text-color);
+    transition:
+        outline 450ms ease-out,
+        background-color 450ms ease-out,
+        color 450ms ease-out;
+    border-radius: 2px;
+    @include center-flex-gap();
+
+    @include mobile-only {
+        bottom: 0px;
+        right: 0px;
+        border-radius: 50% 0 0 0;
+    }
+
+    &__icon {
+        text-decoration: none;
+
+        @include mobile-only {
+            margin-left: 15%;
+        }
+    }
+
+    &:hover {
+        outline: 2px solid var(--cards-bg-color);
+        background-color: var(--text-color);
+        color: var(--cards-bg-color);
+    }
+}
+
+.main {
+    @include center-flex-column-gap(15px);
+    margin-bottom: 50px;
+    color: var(--text-color);
+
+    &__title {
+        font-size: 42px;
+
+        @include mobile-only {
+            font-size: 34px;
+            margin-right: 10%;
+        }
+
+        margin: 30px 0;
+        text-align: center;
+        position: relative;
+
+        &::after {
+            content: "🍪";
+            margin-left: 5px;
+            position: absolute;
+            bottom: 5px;
+            height: 54px;
+
+            @include mobile-only {
+                height: auto;
+            }
+
+            aspect-ratio: 1/1;
+            rotate: 0deg;
+            transform-origin: 50% 57%;
+            transition: rotate 650ms ease-out;
+        }
+
+        &:hover::after {
+            rotate: 360deg;
+        }
+
+        &>.main__title--light-font-weight {
+            font-weight: 400;
+        }
+
+    }
+
+
+    &__form {
+        @include center-flex-column-gap(40px);
+
+        @include mobile-only {
+            width: 100%;
+        }
+
+    }
+
+    &__label {
+        @include label-styling;
+    }
+
+    &__input {
+        @include input-styling;
+    }
+
+    &__buttons-container {
+        margin-block: 25px;
+        width: 100%;
+        @include center-flex-gap(20px);
+
+        @include mobile-only {
+            @include center-flex-column-gap(20px);
+        }
+    }
+
+    &__button {
+        @include button-styling;
+    }
+
+    &__cookie-cards-container {
+        @include grid(auto-fill, 2);
+        // width: 50%;
+        // justify-items: center;
+        // align-items: center;
+
+        @include mobile-only {
+            @include grid(auto-fill, 1)
+        }
+    }
+}
+
+.cookie-card {
+    @include cookie-card-styling;
+    position: relative;
+
+    &__name,
+    &__value {
+        margin: 10px;
+        font-weight: 600;
+
+        &>span {
+            font-weight: 400;
+        }
+    }
+
+
+    &__button {
+        @include center-flex-gap();
+        background-color: var(--delete-button-bg-color);
+        color: var(--delete-button-color);
+        transition: background-color 150ms ease-out;
+        aspect-ratio: 1/1;
+        height: 20px;
+        border-radius: 5px;
+        position: absolute;
+        top: 10%;
+        left: 90%;
+
+        &::before {
+            @include center-flex-gap();
+            content: "×";
+            height: 100%;
+            width: 100%;
+            scale: 150%;
+        }
+
+        &:hover {
+            background-color: var(--delete-button-bg-color--hover);
+        }
+
+        &:active {
+            background-color: var(--delete-button-bg-color--active);
+        }
+    }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Meta tags-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="This repository contains the code for the memory card game">
+  <meta color="color-scheme" content="light dark" />
+
+  <!-- Title -->
+  <title>JS cookies</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/904e9ee361.js" crossorigin="anonymous"></script>
+
+  <!-- Page logo -->
+  <link rel="icon" href="./cookie-icon.png" type="image/gif">
+
+  <!-- JS -->
+  <script defer src="dark-mode.js"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+
+
+  <main class="main">
+
+    <a href="#title">
+      <div class="scroll-to-top">
+        <i class="fa-solid fa-arrow-up-long scroll-to-top__icon"></i>
+      </div>
+    </a>
+
+    <h1 class="main__title" id="title">Cookie <span class="main__title--light-font-weight">creator </span></h1>
+
+    <form action="#" class="main__form">
+      <label for="name" class="main__label main__label-name" name="name">
+        Name of cookie
+        <input type="text" id="name" class="main__input main__input-name">
+      </label>
+      <label for="value" class="main__label main__label-value" name="value">
+        Value of cookie
+        <input type="text" id="value" class="main__input main__input-value">
+      </label>
+    </form>
+
+
+    <div class="main__buttons-container">
+      <button class="main__button">Create</button>
+      <button class="main__button">Show</button>
+    </div>
+
+    <div class="main__cookie-cards-container ">
+
+      <!-- Main 3 -->
+
+      <div class="cookie-card">
+        <p class="cookie-card__name">Name: <span>Laptop</span></p>
+        <p class="cookie-card__value">Value: <span>1000</span></p>
+        <button class="cookie-card__button"></button>
+      </div>
+
+
+      <div class="cookie-card">
+        <p class="cookie-card__name">Name: <span>T-shirt</span></p>
+        <p class="cookie-card__value">Value: <span>20</span></p>
+        <button class="cookie-card__button"></button>
+      </div>
+
+
+      <div class=" cookie-card">
+        <p class="cookie-card__name">Name: <span>Test</span></p>
+        <p class="cookie-card__value">Value: <span>10</span></p>
+        <button class="cookie-card__button"></button>
+      </div>
+      <!-- 
+Template:
+
+      <div class=" cookie-card">
+        <p class="cookie-card__name">Name: <span>${}</span></p>
+        <p class="cookie-card__value">Value: <span>${}</span></p>
+        <button class="cookie-card__button"></button>
+      </div> 
+    
+    -->
+
+
+    </div>
+  </main>
+</body>
+
+</html>
