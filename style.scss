@@ -332,17 +332,20 @@ a {
             content: "🍪";
             margin-left: 5px;
             position: absolute;
-            bottom: 5px;
-            height: 54px;
+            bottom: 0px;
 
             @include mobile-only {
-                height: auto;
+                height: 32px;
+                line-height: 32px;
             }
 
             aspect-ratio: 1/1;
+            height: 54px;
+            line-height: 54px;
             rotate: 0deg;
-            transform-origin: 50% 57%;
+            transform-origin: 50% 50%;
             transition: rotate 650ms ease-out;
+
         }
 
         &:hover::after {
