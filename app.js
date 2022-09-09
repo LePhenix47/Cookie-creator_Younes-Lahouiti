@@ -134,6 +134,8 @@ function createCookieCardsInHTML(cookie) {
 
   cookieCardsContainer.appendChild(cookieCardElement);
 
+  cookieCardElement.classList.add("active");
+
   deleteButton.addEventListener("click", (e) => {
     e.target.parentElement.remove();
     document.cookie = `${name}=${value}; expires=${new Date(0)}`;
