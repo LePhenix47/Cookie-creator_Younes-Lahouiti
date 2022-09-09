@@ -24,8 +24,6 @@ inputValueElement.addEventListener("change", function (e) {
   valueOfCookieInput = this.value;
   if (e.type === "invalid" || e.target.value === "") {
     e.target.setCustomValidity("Please fill in this field to create a cookie");
-  } else if (e.type === "change" || e.target.value !== "") {
-    e.target.setCustomValidity("");
   }
 });
 
@@ -98,7 +96,7 @@ function createCookieCardsInHTML(cookie) {
       <div class=" cookie-card">
         <p class="cookie-card__name">Name: <span>${}</span></p>
         <p class="cookie-card__value">Value: <span>${}</span></p>
-        <button class="cookie-card__button"></button>
+        <button class="cookie-card__button" type="button"></button>
       </div> 
   */
 
@@ -106,6 +104,7 @@ function createCookieCardsInHTML(cookie) {
   cookieCardElement.classList.add("cookie-card");
   cookieCardElement.setAttribute("data-cookie-name", name);
 
+  // <p class="cookie-card__name">Name: <span>${}</span></p>
   let cookieNameParagraphElement = document.createElement("p");
 
   cookieNameParagraphElement.classList.add("cookie-card__name");
@@ -116,6 +115,7 @@ function createCookieCardsInHTML(cookie) {
 
   cookieNameParagraphElement.appendChild(cookieSpanNameElement);
 
+  // <p class="cookie-card__value">Value: <span>${}</span></p>
   let cookieValueParagraphElement = document.createElement("p");
   cookieValueParagraphElement.classList.add("cookie-card__value");
   cookieValueParagraphElement.textContent = "Value: ";
@@ -124,14 +124,17 @@ function createCookieCardsInHTML(cookie) {
   cookieSpanValueElement.textContent = `${value}`;
   cookieValueParagraphElement.appendChild(cookieSpanValueElement);
 
+  // <button class="cookie-card__button" type="button"></button>
   let deleteButton = document.createElement("button");
   deleteButton.classList.add("cookie-card__button");
   deleteButton.setAttribute("type", "button");
 
+  //Nesting the elements in the right way in the card
   cookieCardElement.appendChild(cookieNameParagraphElement);
   cookieCardElement.appendChild(cookieValueParagraphElement);
   cookieCardElement.appendChild(deleteButton);
 
+  //Adding the card in the container
   cookieCardsContainer.appendChild(cookieCardElement);
 
   cookieCardElement.classList.add("active");
